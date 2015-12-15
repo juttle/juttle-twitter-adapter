@@ -1,2 +1,2 @@
-module.exports = require('./lib/twitter-backend');
+module.exports = require('./lib/twitter-adapter');
 

@@ -1,6 +1,6 @@
-# twitter-backend
+# Juttle Twitter Adapter
 
-Twitter API backend for juttle
+Twitter API adapter for juttle
 
 # Installation / Setup
 
@@ -16,7 +16,7 @@ Make sure the following is in your environment:
 
 Add the following to ~/.juttle/config.json:
 
-    "juttle-twitter-backend": {
+    "juttle-twitter-adapter": {
         "consumer_key": "...",
         "consumer_secret": "...","
         "access_token_key": "...", 
@@ -35,7 +35,7 @@ For example the following will search for all tweets mentioning "potus"
 
 Historical searches are constrained by the fact that Twitter's API returns tweets in reverse chronological order, but Juttle semantics require data points to be emitted in order.
 
-To handle this, the backend buffers all the points in memory before emitting them down the flowgraph and there is a limit to control how many points are buffered, which defaults to 1000. This can be overridden using the `-total` option to the read command.
+To handle this, the adapter buffers all the points in memory before emitting them down the flowgraph and there is a limit to control how many points are buffered, which defaults to 1000. This can be overridden using the `-total` option to the read command.
 
 For example the following will read the last 100 tweets referencing "potus":
 
