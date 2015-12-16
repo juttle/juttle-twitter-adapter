@@ -2,8 +2,12 @@
   "name": "juttle-twitter-adapter",
   "version": "0.1.0",
   "description": "Juttle adapter for Twitter",
+  "keywords": ["juttle", "adapter", "twitter"],
+  "homepage": "https://github.com/juttle/juttle-twitter-adapter",
+  "bugs": "https://github.com/juttle/juttle-twitter-adapter/issues",
   "license": "Apache-2.0",
   "main": "index.js",
+  "repository": "juttle/juttle-twitter-adapter",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +16,9 @@
     "heap": "^0.2.6",
     "moment": "^2.10.6",
     "twitter": "^1.2.5"
+  },
+  "engines": {
+    "node": ">=0.10.40",
+    "npm": ">=2.1.6"
   }
 }
