@@ -11,7 +11,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Michael Demmer <demmer@jut.io>",
   "dependencies": {
     "heap": "^0.2.6",
     "moment": "^2.10.6",
