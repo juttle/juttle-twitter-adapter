@@ -1,7 +1,7 @@
 {
   "name": "juttle-twitter-adapter",
   "version": "0.1.0",
-  "description": "",
+  "description": "Juttle adapter for Twitter",
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
