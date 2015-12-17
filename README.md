@@ -1,42 +1,78 @@
 # Juttle Twitter Adapter
 
-Twitter API adapter for juttle
+Twitter adapter for the [Juttle data flow
+language](https://github.com/juttle/juttle).
 
-# Installation / Setup
+## Examples
 
-Check out this repository and the juttle repository into a working directory.
+Filter the real-time Twitter stream for all tweets containing "potus"
 
-Run `npm link` in each.
+```juttle
+read twitter -stream true 'potus'
+```
 
-Make sure the following is in your environment:
+Read the last 100 historical tweets referencing "potus":
 
-`NODE_PATH=/usr/local/lib/node_modules`
+```
+read twitter -total 100 'potus'
+```
 
-# Configuration
+## Installation
 
-Add the following to ~/.juttle/config.json:
+Like Juttle itself, the adapter is installed as a npm package. Both Juttle and
+the adapter need to be installed side-by-side:
 
-    "juttle-twitter-adapter": {
-        "consumer_key": "...",
-        "consumer_secret": "...","
-        "access_token_key": "...", 
-        "access_token_secret": "..."
+```bash
+$ npm install juttle
+$ npm install juttle-twitter-adapter
+```
+
+## Configuration
+
+The adapter needs to be registered and configured so that it can be used from
+within Juttle. To do so, add the following to your `~/.juttle/config.json` file:
+
+```json
+{
+    "adapters": {
+        "juttle-twitter-adapter": {
+            "consumer_key": "...",
+            "consumer_secret": "...",
+            "access_token_key": "...",
+            "access_token_secret": "..."
+        }
     }
+}
+```
 
-To obtain credentials, first set up a Twitter App at [https://apps.twitter.com/]  and create an OAuth token.
+To obtain Twitter credentials, first set up a [Twitter App](https://apps.twitter.com/) and create an OAuth token.
 
-# Usage
+## Usage
 
-For a live query, you can tap into the firehose of live tweets for a given filter term using the streaming API.
+The adapter can run in two modes -- streaming or historical, controlled by the `-stream` option. In both cases it requires a single search term in the filter expression, as shown in the examples above.
 
-For example the following will search for all tweets mentioning "potus"
+Historical searches are somewhat constrained by the fact that Twitter's API returns
+tweets in reverse chronological order, but Juttle semantics require data points
+to be emitted in order.
 
-`readx twitter -stream true "potus"`
+To handle this, the adapter buffers all the points in memory before emitting
+them down the flowgraph. There is a limit to control how many points are
+buffered, which defaults to 1000. This can be overridden using the `total`
+option.
 
-Historical searches are constrained by the fact that Twitter's API returns tweets in reverse chronological order, but Juttle semantics require data points to be emitted in order.
+In streaming mode, the adapter will buffer all points for a configurable delay
+so that they can be properly sorted into increasing time order.
 
-To handle this, the adapter buffers all the points in memory before emitting them down the flowgraph and there is a limit to control how many points are buffered, which defaults to 1000. This can be overridden using the `-total` option to the read command.
+### Options
 
-For example the following will read the last 100 tweets referencing "potus":
+Name | Type | Required | Description
+-----|------|----------|-------------
+`stream` | boolean | no | run in live streaming mode (default: false)
+`total`  | integer | no | maximum number of tweets to emit in historical mode (default: 1000)
+`count`  | integer | no | number of tweets to fetch per round-trip in historical mode (default: 100, max: 100)
+`delay`  | integer | no | in streaming mode, delay for the given latency (in ms) to reorder incoming points
 
-`readx twitter -total 100 "potus"`
+## Contributing
+
+Want to contribute? Awesome! Don’t hesitate to file an issue or open a pull
+request.
