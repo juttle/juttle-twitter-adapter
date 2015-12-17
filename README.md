@@ -49,7 +49,9 @@ To obtain Twitter credentials, first set up a [Twitter App](https://apps.twitter
 
 ## Usage
 
-Historical searches are constrained by the fact that Twitter's API returns
+The adapter can run in two modes -- streaming or historical, controlled by the `-stream` option. In both cases it requires a single search term in the filter expression, as shown in the examples above.
+
+Historical searches are somewhat constrained by the fact that Twitter's API returns
 tweets in reverse chronological order, but Juttle semantics require data points
 to be emitted in order.
 
@@ -58,14 +60,17 @@ them down the flowgraph. There is a limit to control how many points are
 buffered, which defaults to 1000. This can be overridden using the `total`
 option.
 
+In streaming mode, the adapter will buffer all points for a configurable delay
+so that they can be properly sorted into increasing time order.
+
 ### Options
 
 Name | Type | Required | Description
 -----|------|----------|-------------
-`stream` | boolean | no | filter the live Twitter stream (default: false)
-`total`  | integer | no | maximum number of tweets to buffer (default: 1000)
-`count`  | integer | no | limit the number of search results (default: 100)
-`delay`  | integer | no | when emitting points into flowgraph, allow up to `delay` latency of point arrival
+`stream` | boolean | no | run in live streaming mode (default: false)
+`total`  | integer | no | maximum number of tweets to emit in historical mode (default: 1000)
+`count`  | integer | no | number of tweets to fetch per round-trip in historical mode (default: 100, max: 100)
+`delay`  | integer | no | in streaming mode, delay for the given latency (in ms) to reorder incoming points
 
 ## Contributing
 
