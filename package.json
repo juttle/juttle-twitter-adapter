@@ -1,8 +1,12 @@
 {
   "name": "juttle-twitter-adapter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Juttle adapter for Twitter",
-  "keywords": ["juttle", "adapter", "twitter"],
+  "keywords": [
+    "juttle",
+    "adapter",
+    "twitter"
+  ],
   "homepage": "https://github.com/juttle/juttle-twitter-adapter",
   "bugs": "https://github.com/juttle/juttle-twitter-adapter/issues",
   "license": "Apache-2.0",
@@ -17,7 +21,7 @@
     "twitter": "^1.2.5"
   },
   "peerDependencies": {
-      "juttle": "^0.2.0"
+    "juttle": "^0.2.0"
   },
   "engines": {
     "node": ">=4.2.0",
