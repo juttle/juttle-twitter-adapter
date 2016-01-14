@@ -21,7 +21,7 @@
     "twitter": "^1.2.5"
   },
   "peerDependencies": {
-    "juttle": "^0.2.0"
+    "juttle": ">=0.2.0"
   },
   "engines": {
     "node": ">=4.2.0",
