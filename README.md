@@ -35,7 +35,7 @@ within Juttle. To do so, add the following to your `~/.juttle/config.json` file:
 ```json
 {
     "adapters": {
-        "juttle-twitter-adapter": {
+        "twitter": {
             "consumer_key": "...",
             "consumer_secret": "...",
             "access_token_key": "...",
