@@ -2,6 +2,12 @@
 
 This file documents all notable changes to Juttle. The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.3.1
+
+### Bug Fixes
+
+- Fixed a misuse of the promise library that caused all historical reads to fail. [#13]
+
 ## 0.3.0
 
 ### Major Changes
