@@ -17,6 +17,8 @@ Read the last 100 historical tweets referencing "potus":
 read twitter -from :0: -limit 100 'potus'
 ```
 
+An end-to-end example is described [here](https://github.com/juttle/juttle-engine/tree/master/examples/twitter-race) and deployed to the demo system [demo.juttle.io](http://demo.juttle.io/?path=/examples/twitter-race/twitter.juttle).
+
 ## Installation
 
 Like Juttle itself, the adapter is installed as a npm package. Both Juttle and
