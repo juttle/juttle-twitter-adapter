@@ -2,6 +2,12 @@
 
 This file documents all notable changes to Juttle. The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.4.0
+
+### Major Changes
+
+- Updated to be compatible with Juttle 0.7.0.
+
 ## 0.3.1
 
 ### Bug Fixes
